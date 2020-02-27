@@ -123,24 +123,25 @@ export class Operario{
 let main = () => {
     //Primero simularemos ver la cola de impresion
 
-    //Instanciamos el objeto impresora
+    //1. Instanciamos el objeto impresora
     let impresora = new Impresora("HP")
 
-    //Instaciamos en objeto Operario
+    //2. Instaciamos en objeto Operario
     let operarioPrincipal = new Operario("Ignacio", impresora)
 
-    //Instanciamos las impresiones
+    //3. Instanciamos las impresiones
     let impresion1 = new Impresiones(TipoHoja.A2, 3, true)
     let impresion2 = new Impresiones(TipoHoja.A4, 5, true)
 
-    //Enviamos las impresiones a la cola
+    //4. Enviamos las impresiones a la cola
     operarioPrincipal.enviarImpresion(impresion1)
     operarioPrincipal.enviarImpresion(impresion2)
 
     //Mostramos las impresion
     //impresora.mostrarImpresiones()
     //console.log(impresora.calcularCosto(0))
-    console.log(impresora.calcularCostoTotal())
+    //5. Mostramos el costo total de todas las impresiones
+    //console.log(impresora.calcularCostoTotal())
 
 }
-main()
+//main()

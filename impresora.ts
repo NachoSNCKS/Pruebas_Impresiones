@@ -61,6 +61,41 @@ export class Impresora{
         costoEspec = cantidadHojas * costoTipoHoja * costoColor
         return costoEspec;
     }
+    calcularCostoTotal() : number{
+        let costoAcum = 0
+        let costoColor = 0
+        let costoTipoHoja = 0
+        for (let i = 0; i < this.colaImpresion.length ; i++){
+            let cantidadHojas = this.colaImpresion[i].cantidad
+            let conColor = this.colaImpresion[i].color
+            let tipoDeHoja = this.colaImpresion[i].tipo
+            if(conColor == true){
+                costoColor = 1.5
+                if(tipoDeHoja == 0){
+                    costoTipoHoja = 3
+                }else if(tipoDeHoja == 1){
+                    costoTipoHoja = 2
+                }else if(tipoDeHoja == 2){
+                    costoTipoHoja = 1
+                }else if(tipoDeHoja == 3){
+                    costoTipoHoja = 0.5
+                }
+            }else{
+                costoColor = 0.5
+                if(tipoDeHoja == 0){
+                    costoTipoHoja = 3
+                }else if(tipoDeHoja == 1){
+                    costoTipoHoja = 2
+                }else if(tipoDeHoja == 2){
+                    costoTipoHoja = 1
+                }else if(tipoDeHoja == 3){
+                    costoTipoHoja = 0.5
+                }
+            }
+            costoAcum = costoAcum + cantidadHojas * costoColor * costoTipoHoja
+        }
+        return costoAcum;
+    }
     //Aqui mostraremos todos nuestros calculos
     mostrarImpresiones(){
         for (let i = 0 ; i < this.colaImpresion.length; i++){
@@ -100,11 +135,12 @@ let main = () => {
 
     //Enviamos las impresiones a la cola
     operarioPrincipal.enviarImpresion(impresion1)
-    //operarioPrincipal.enviarImpresion(impresion2)
+    operarioPrincipal.enviarImpresion(impresion2)
 
     //Mostramos las impresion
     //impresora.mostrarImpresiones()
-    console.log(impresora.calcularCosto(0))
+    //console.log(impresora.calcularCosto(0))
+    console.log(impresora.calcularCostoTotal())
 
 }
 main()
